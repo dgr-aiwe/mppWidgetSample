@@ -10,10 +10,7 @@ import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
-import dev.icerock.moko.widgets.screen.Args
-import dev.icerock.moko.widgets.screen.WidgetScreen
-import dev.icerock.moko.widgets.screen.getViewModel
-import dev.icerock.moko.widgets.screen.listen
+import dev.icerock.moko.widgets.screen.*
 import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
@@ -58,6 +55,10 @@ class InputPhoneScreen(
                 submitButton leftRightToLeftRight root offset 16
             }
         }
+    }
+
+    override fun showError(error: StringDesc) {
+        showToast(error)
     }
 
     object Ids {
