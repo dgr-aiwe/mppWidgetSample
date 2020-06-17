@@ -15,6 +15,7 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.style.view.WidgetSize
+import org.example.mpp.auth.ext.openUrl
 
 class InputPhoneScreen(
     private val theme: Theme,
@@ -47,12 +48,21 @@ class InputPhoneScreen(
                 onTap = viewModel::onSubmitPressed
             )
 
+            val githubButton = +button(
+                size = WidgetSize.WrapContent,
+                content = ButtonWidget.Content.Text(Value.data("Github".desc())),
+                onTap = ::onGitHubPressed
+            )
+
             constraints {
                 nameInput centerYToCenterY root
                 nameInput leftRightToLeftRight root offset 16
 
                 submitButton bottomToBottom root.safeArea offset 16
                 submitButton leftRightToLeftRight root offset 16
+
+                githubButton centerXToCenterX root
+                githubButton topToTop root.safeArea offset 16
             }
         }
     }
@@ -67,5 +77,9 @@ class InputPhoneScreen(
 
     override fun routeInputCode(token: String) {
         routeInputCode.route(token)
+    }
+
+    private fun onGitHubPressed() {
+        openUrl("https://github.com/icerockdev/moko-widgets")
     }
 }
