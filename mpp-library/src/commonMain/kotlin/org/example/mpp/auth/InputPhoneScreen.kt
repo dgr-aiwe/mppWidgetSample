@@ -16,7 +16,9 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.mpp.auth.ext.openUrl
+import org.example.mpp.auth.ext.registerPhonePickerHandler
 import org.example.mpp.auth.ext.showDialog
+import org.example.mpp.auth.ext.showPhonePicker
 
 class InputPhoneScreen(
     private val theme: Theme,
@@ -93,10 +95,16 @@ class InputPhoneScreen(
         openUrl("https://github.com/icerockdev/moko-widgets")
     }
 
+    private val phonePickerHandler by registerPhonePickerHandler(9) {
+        showToast("picked $it".desc())
+    }
+
     private fun onAboutPressed() {
-        showDialog(
-            title = "Hello world!".desc(),
-            message = "Text from common module".desc()
-        )
+//        showDialog(
+//            title = "Hello world!".desc(),
+//            message = "Text from common module".desc()
+//        )
+
+        showPhonePicker(phonePickerHandler)
     }
 }
