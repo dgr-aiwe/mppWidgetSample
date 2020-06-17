@@ -47,7 +47,7 @@ class App : BaseApplication() {
                 )
 
                 val infoScreen = registerScreen(InfoScreen::class) {
-                    InfoScreen(theme = theme, routeProfile = bottomNavigationRouter.createChangeTabRoute(2))
+                    PlatformInfoScreen(theme = theme, routeProfile = bottomNavigationRouter.createChangeTabRoute(2))
                 }
 
                 MainBottomNavigationScreen(

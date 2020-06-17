@@ -1,10 +1,6 @@
 package org.example.mpp.auth
 
-import dev.icerock.moko.fields.FormField
-import dev.icerock.moko.fields.liveBlock
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
-import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
-import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
@@ -17,7 +13,6 @@ import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.mpp.auth.ext.openUrl
 import org.example.mpp.auth.ext.registerPhonePickerHandler
-import org.example.mpp.auth.ext.showDialog
 import org.example.mpp.auth.ext.showPhonePicker
 
 class InputPhoneScreen(
