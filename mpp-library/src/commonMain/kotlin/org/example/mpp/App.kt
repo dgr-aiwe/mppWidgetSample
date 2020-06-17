@@ -20,6 +20,7 @@ import dev.icerock.moko.widgets.style.state.PressableState
 import dev.icerock.moko.widgets.style.view.Colors
 import dev.icerock.moko.widgets.style.view.rgba
 import org.example.mpp.auth.*
+import org.example.mpp.friends.FriendsScreen
 
 class App : BaseApplication() {
     override fun setup(): ScreenDesc<Args.Empty> {
@@ -103,10 +104,15 @@ class App : BaseApplication() {
                 )
             }
 
+            val friendsScreen = registerScreen(FriendsScreen::class) {
+                profileFactory.createFriendsScreen()
+            }
+
             val profileScreen = registerScreen(ProfileScreen::class) {
                 profileFactory.createProfileScreen(
                     routeEdit = navigationRouter.createPushResultRoute(profileEditScreen) { it.edited },
-                    routeLogout = rootNavigationRouter.createPopRoute()
+                    routeLogout = rootNavigationRouter.createPopRoute(),
+                    routeFriends = navigationRouter.createPushRoute(friendsScreen)
                 )
             }
 
