@@ -4,18 +4,33 @@
 
 package org.example.mpp
 
+import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.widgets.ButtonWidget
 import dev.icerock.moko.widgets.core.Theme
+import dev.icerock.moko.widgets.factory.SystemButtonViewFactory
 import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.BaseApplication
 import dev.icerock.moko.widgets.screen.ScreenDesc
 import dev.icerock.moko.widgets.screen.TypedScreenDesc
 import dev.icerock.moko.widgets.screen.navigation.*
+import dev.icerock.moko.widgets.style.background.Background
+import dev.icerock.moko.widgets.style.background.Fill
+import dev.icerock.moko.widgets.style.state.PressableState
+import dev.icerock.moko.widgets.style.view.Colors
+import dev.icerock.moko.widgets.style.view.rgba
 import org.example.mpp.auth.*
 
 class App : BaseApplication() {
     override fun setup(): ScreenDesc<Args.Empty> {
-        val theme = Theme()
+        val theme = Theme() {
+            factory[ButtonWidget.DefaultCategory] = SystemButtonViewFactory(
+                background = PressableState(
+                    normal = Background(fill = Fill.Solid(color = rgba(20, 15 , 15, 0.7))),
+                    pressed = Background(fill = Fill.Solid(color = rgba(20, 50 , 15, 1.0))),
+                    disabled = Background(fill = Fill.Solid(color = rgba(35, 55 , 80, 1.0))))
+            )
+        }
 
         val authFactory = AuthFactory(theme)
         val profileFactory = ProfileFactory(theme)
