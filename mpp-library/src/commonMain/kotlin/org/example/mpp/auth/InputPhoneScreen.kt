@@ -16,6 +16,7 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.mpp.auth.ext.openUrl
+import org.example.mpp.auth.ext.showDialog
 
 class InputPhoneScreen(
     private val theme: Theme,
@@ -54,6 +55,12 @@ class InputPhoneScreen(
                 onTap = ::onGitHubPressed
             )
 
+            val aboutButton = +button(
+                size = WidgetSize.WrapContent,
+                content = ButtonWidget.Content.Text(Value.data("About".desc())),
+                onTap = ::onAboutPressed
+            )
+
             constraints {
                 nameInput centerYToCenterY root
                 nameInput leftRightToLeftRight root offset 16
@@ -61,8 +68,11 @@ class InputPhoneScreen(
                 submitButton bottomToBottom root.safeArea offset 16
                 submitButton leftRightToLeftRight root offset 16
 
-                githubButton centerXToCenterX root
+                githubButton leftToLeft  root
                 githubButton topToTop root.safeArea offset 16
+
+                aboutButton rightToRight root
+                aboutButton topToTop root.safeArea offset 16
             }
         }
     }
@@ -81,5 +91,12 @@ class InputPhoneScreen(
 
     private fun onGitHubPressed() {
         openUrl("https://github.com/icerockdev/moko-widgets")
+    }
+
+    private fun onAboutPressed() {
+        showDialog(
+            title = "Hello world!".desc(),
+            message = "Text from common module".desc()
+        )
     }
 }
